@@ -1,1 +1,103 @@
-{"dogs":[{"name":"Charlie","image":"/assets/blue-heeler.png","description":"as Tala Transmasculine Qatari East little damp","isFavorite":true,"id":0},{"name":"Carroll","image":"/assets/boxer.png","description":"marketplace County Southwest Card Phosphorus","isFavorite":false,"id":1},{"name":"Tobin","image":"/assets/chihuahua.avif","description":"Nevada Ringgit Coupe overriding North hm Cloned Cruiser","isFavorite":true,"id":2},{"name":"Antonia","image":"/assets/cowardly.png","description":"Supervisor Jany the utilisation male","isFavorite":true,"id":3},{"name":"Roy","image":"/assets/corgi.png","description":"Northwest Communications cyan payment bandwidth","isFavorite":true,"id":4},{"name":"Houston","image":"/assets/blue-heeler.png","description":"embrace TCP Data than Gwent Electronic restfully","isFavorite":true,"id":5},{"name":"Geovanni","image":"/assets/corgi.png","description":"payment challenge ouch joule Rubber tender South","isFavorite":true,"id":6},{"name":"Keira","image":"/assets/corgi.png","description":"Pants ampere North transmitting East","isFavorite":true,"id":7},{"name":"Darwin","image":"/assets/corgi.png","description":"Pop Oganesson Visionary corrigo likewise","isFavorite":true,"id":8},{"name":"Kip","image":"/assets/dalmation.png","description":"fuchsia Southwest interface sievert Minivan Tugrik mindshare","isFavorite":true,"id":9},{"name":"Cleora","image":"/assets/blue-heeler.png","description":"online since indexing Sawayn Solutions wonderfully calculating","isFavorite":false,"id":10},{"name":"Remington","image":"/assets/boxer.png","description":"Identity Gwynedd glower anti violet VGA North upward","isFavorite":true,"id":11},{"name":"Effie","image":"/assets/cowardly.png","description":"but now Technician Latin pixel ability North","isFavorite":true,"id":12},{"name":"Evalyn","image":"/assets/boxer.png","description":"cyan North loyally Jazz Lawrence up Mississippi","isFavorite":false,"id":13},{"name":"Murphy","image":"/assets/dalmation.png","description":"Future Clwyd Lockman furiously grey ambitus Bespoke","isFavorite":true,"id":14},{"name":"Gracie","image":"/assets/boxer.png","description":"siemens Tala holistic IB applications microchip Metal","isFavorite":true,"id":15},{"name":"Omari","image":"/assets/chihuahua.avif","description":"bandwidth desire Home generating panel hence Cyprus Accountability","isFavorite":true,"id":16},{"name":"Lela","image":"/assets/dalmation.png","description":"management Applications yowza Direct for purple Incredible Investor","isFavorite":false,"id":17},{"name":"Jamel","image":"/assets/dalmation.png","description":"Internal Plastic salmon deliver than","isFavorite":false,"id":18},{"name":"Michel","image":"/assets/blue-heeler.png","description":"strange Cotton Wagon Peso woman wireless female","isFavorite":true,"id":19}]}
+{
+  "dogs": [
+    {
+      "id": "0",
+      "isFavorite": false
+    },
+    {
+      "id": "1",
+      "isFavorite": false
+    },
+    {
+      "id": "2",
+      "isFavorite": false
+    },
+    {
+      "id": "3",
+      "isFavorite": false
+    },
+    {
+      "id": "4",
+      "isFavorite": true
+    },
+    {
+      "id": "5",
+      "isFavorite": true
+    },
+    {
+      "id": "6",
+      "isFavorite": true
+    },
+    {
+      "id": "7",
+      "isFavorite": true
+    },
+    {
+      "id": "8",
+      "isFavorite": true
+    },
+    {
+      "id": "9",
+      "isFavorite": true
+    },
+    {
+      "id": "10",
+      "isFavorite": true
+    },
+    {
+      "id": "11",
+      "isFavorite": true
+    },
+    {
+      "name": "Effie",
+      "image": "/assets/cowardly.png",
+      "description": "but now Technician Latin pixel ability North",
+      "isFavorite": true,
+      "id": "12"
+    },
+    {
+      "id": "13",
+      "isFavorite": true
+    },
+    {
+      "name": "Murphy",
+      "image": "/assets/dalmation.png",
+      "description": "Future Clwyd Lockman furiously grey ambitus Bespoke",
+      "isFavorite": true,
+      "id": "14"
+    },
+    {
+      "name": "Gracie",
+      "image": "/assets/boxer.png",
+      "description": "siemens Tala holistic IB applications microchip Metal",
+      "isFavorite": true,
+      "id": "15"
+    },
+    {
+      "name": "Omari",
+      "image": "/assets/chihuahua.avif",
+      "description": "bandwidth desire Home generating panel hence Cyprus Accountability",
+      "isFavorite": true,
+      "id": "16"
+    },
+    {
+      "id": "17",
+      "isFavorite": true
+    },
+    {
+      "id": "18",
+      "isFavorite": true
+    },
+    {
+      "name": "Michel",
+      "image": "/assets/blue-heeler.png",
+      "description": "strange Cotton Wagon Peso woman wireless female",
+      "isFavorite": true,
+      "id": "19"
+    },
+    {
+      "id": "0856",
+      "isFavorite": true
+    }
+  ]
+}

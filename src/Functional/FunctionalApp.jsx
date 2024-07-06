@@ -8,23 +8,22 @@ import toast from "react-hot-toast";
 export function FunctionalApp() {
   const [dogs, setDogs] = useState([]);
   const [activeTab, setActiveTab] = useState("all");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const refetchDogs = () => Requests.getAllDogs().then(setDogs);
 
   useEffect(() => {
-    Requests.getAllDogs().then((data) => {
-      setDogs(data);
-      setIsLoading(false);
-    });
+    refetchDogs();
   }, []);
 
   const handleFavoriteToggle = async (id, isFavorite) => {
     setIsLoading(true);
     try {
-      const updatedDog = await Requests.updateDog({
+      await Requests.updateDog({
         id,
-        isFavorite: !isFavorite,
+        isFavorite: isFavorite,
       });
-      setDogs(dogs.map((dog) => (dog.id === id ? updatedDog : dog)));
+      await refetchDogs();
     } catch (error) {
       toast.error("Error updating dog");
     } finally {
@@ -36,6 +35,7 @@ export function FunctionalApp() {
     setIsLoading(true);
     try {
       await Requests.deleteDog(id);
+      await refetchDogs();
       setDogs(dogs.filter((dog) => dog.id !== id));
     } catch (error) {
       toast.error("Error deleting dog");
@@ -44,13 +44,25 @@ export function FunctionalApp() {
     }
   };
 
-  const filteredDogs = () => {
-    if (activeTab === "favorited") {
-      return dogs.filter((dog) => dog.isFavorite);
-    } else if (activeTab === "unfavorited") {
-      return dogs.filter((dog) => !dog.isFavorite);
-    }
-    return dogs;
+  const handleAddDog = async (dog) => {
+    setIsLoading(true);
+    return Requests.postDog(dog)
+      .then(() => refetchDogs())
+      .finally(() => setIsLoading(false));
+  };
+
+  const favDogs = dogs.filter((dog) => dog.isFavorite);
+  const unfavDogs = dogs.filter((dog) => !dog.isFavorite);
+
+  const dogsList = {
+    all: dogs,
+    favorited: favDogs,
+    unfavorited: unfavDogs,
+  };
+
+  const counters = {
+    favorited: favDogs.length,
+    unfavorited: unfavDogs.length,
   };
 
   return (
@@ -61,14 +73,17 @@ export function FunctionalApp() {
       <FunctionalSection
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        dogs={dogs}
+        counters={counters}
       >
         <div className="content-container">
           {activeTab === "create" ? (
-            <FunctionalCreateDogForm />
+            <FunctionalCreateDogForm
+              isLoading={isLoading}
+              addDog={handleAddDog}
+            />
           ) : (
             <FunctionalDogs
-              dogs={filteredDogs()}
+              dogs={dogsList[activeTab]}
               isLoading={isLoading}
               onFavoriteToggle={handleFavoriteToggle}
               onDelete={handleDelete}

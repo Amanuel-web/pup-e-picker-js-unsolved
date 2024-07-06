@@ -1,36 +1,42 @@
 import { Component } from "react";
-import { ClassSection } from "./ClassSection";
-import { ClassDogs } from "./ClassDogs";
 import { ClassCreateDogForm } from "./ClassCreateDogForm";
-import toast from "react-hot-toast";
+import { ClassDogs } from "./ClassDogs";
+import { ClassSection } from "./ClassSection";
 import { Requests } from "../api";
+import toast from "react-hot-toast";
 
 export class ClassApp extends Component {
   state = {
     dogs: [],
     activeTab: "all",
-    isLoading: true,
+    isLoading: false,
   };
 
   componentDidMount() {
-    Requests.getAllDogs().then((data) => {
-      this.setState({ dogs: data, isLoading: false });
-    });
+    this.refetchDogs();
   }
+
+  refetchDogs = () => {
+    Requests.getAllDogs()
+      .then((data) => {
+        if (!data || !Array.isArray(data)) {
+          throw new Error("Invalid data format");
+        }
+        this.setState({ dogs: data });
+      })
+      .catch((error) => {
+        toast.error("Error fetching dogs");
+      });
+  };
 
   handleFavoriteToggle = async (id, isFavorite) => {
     this.setState({ isLoading: true });
     try {
-      const updatedDog = await Requests.updateDog({
-        id,
-        isFavorite: !isFavorite,
-      });
-      this.setState((prevState) => ({
-        dogs: prevState.dogs.map((dog) => (dog.id === id ? updatedDog : dog)),
-        isLoading: false,
-      }));
+      await Requests.updateDog({ id, isFavorite });
+      this.refetchDogs();
     } catch (error) {
       toast.error("Error updating dog");
+    } finally {
       this.setState({ isLoading: false });
     }
   };
@@ -39,34 +45,44 @@ export class ClassApp extends Component {
     this.setState({ isLoading: true });
     try {
       await Requests.deleteDog(id);
+      this.refetchDogs();
       this.setState((prevState) => ({
         dogs: prevState.dogs.filter((dog) => dog.id !== id),
-        isLoading: false,
       }));
     } catch (error) {
       toast.error("Error deleting dog");
+    } finally {
       this.setState({ isLoading: false });
     }
   };
 
-  setActiveTab = (tab) => {
-    this.setState((prevState) => ({
-      activeTab: prevState.activeTab === tab ? "all" : tab,
-    }));
+  handleAddDog = async (dog) => {
+    this.setState({ isLoading: true });
+    return Requests.postDog(dog)
+      .then(() => this.refetchDogs())
+      .finally(() => this.setState({ isLoading: false }));
   };
 
-  filteredDogs = () => {
-    const { dogs, activeTab } = this.state;
-    if (activeTab === "favorited") {
-      return dogs.filter((dog) => dog.isFavorite);
-    } else if (activeTab === "unfavorited") {
-      return dogs.filter((dog) => !dog.isFavorite);
-    }
-    return dogs;
+  setActiveTab = (tab) => {
+    this.setState({ activeTab: tab });
   };
 
   render() {
-    const { activeTab, dogs, isLoading } = this.state;
+    const { dogs, activeTab, isLoading } = this.state;
+
+    const favDogs = dogs.filter((dog) => dog.isFavorite);
+    const unfavDogs = dogs.filter((dog) => !dog.isFavorite);
+
+    const dogsList = {
+      all: dogs,
+      favorited: favDogs,
+      unfavorited: unfavDogs,
+    };
+
+    const counters = {
+      favorited: favDogs.length,
+      unfavorited: unfavDogs.length,
+    };
 
     return (
       <div className="App" style={{ backgroundColor: "skyblue" }}>
@@ -76,14 +92,17 @@ export class ClassApp extends Component {
         <ClassSection
           activeTab={activeTab}
           setActiveTab={this.setActiveTab}
-          dogs={dogs}
+          counters={counters}
         >
           <div className="content-container">
             {activeTab === "create" ? (
-              <ClassCreateDogForm />
+              <ClassCreateDogForm
+                isLoading={isLoading}
+                addDog={this.handleAddDog}
+              />
             ) : (
               <ClassDogs
-                dogs={this.filteredDogs()}
+                dogs={dogsList[activeTab] || []}
                 isLoading={isLoading}
                 onFavoriteToggle={this.handleFavoriteToggle}
                 onDelete={this.handleDelete}

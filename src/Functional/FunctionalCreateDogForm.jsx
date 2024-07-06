@@ -1,20 +1,23 @@
 import { dogPictures } from "../dog-pictures";
-import { Requests } from "../api";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
 // use this as your default selected image
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
-export const FunctionalCreateDogForm = () => {
+export const FunctionalCreateDogForm = ({ isLoading, addDog }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState(defaultSelectedImage);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const resetStateForm = () => {
+    setName("");
+    setDescription("");
+    setPicture(defaultSelectedImage);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
     const newDog = {
       name,
@@ -23,17 +26,13 @@ export const FunctionalCreateDogForm = () => {
       isFavorite: false,
     };
 
-    try {
-      await Requests.postDog(newDog);
-      toast.success("Dog Created");
-      setName("");
-      setDescription("");
-      setPicture(defaultSelectedImage);
-    } catch (error) {
-      toast.error("Error creating dog");
-    } finally {
-      setIsLoading(false);
-    }
+    addDog(newDog)
+      .then(() => {
+        resetStateForm();
+      })
+      .catch(() => {
+        toast.error("Failed to add a dog");
+      });
   };
 
   return (

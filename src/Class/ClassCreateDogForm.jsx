@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { dogPictures } from "../dog-pictures";
-import { Requests } from "../api";
 import toast from "react-hot-toast";
 
+// use this as your default selected image
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
 export class ClassCreateDogForm extends Component {
@@ -10,12 +10,18 @@ export class ClassCreateDogForm extends Component {
     name: "",
     description: "",
     picture: defaultSelectedImage,
-    isLoading: false,
+  };
+
+  resetStateForm = () => {
+    this.setState({
+      name: "",
+      description: "",
+      picture: defaultSelectedImage,
+    });
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ isLoading: true });
 
     const { name, description, picture } = this.state;
     const newDog = {
@@ -25,27 +31,24 @@ export class ClassCreateDogForm extends Component {
       isFavorite: false,
     };
 
-    try {
-      await Requests.postDog(newDog);
-      toast.success("Dog Created");
-      this.setState({
-        name: "",
-        description: "",
-        picture: defaultSelectedImage,
+    this.props
+      .addDog(newDog)
+      .then(() => {
+        this.resetStateForm();
+      })
+      .catch(() => {
+        toast.error("Failed to add a dog");
       });
-    } catch (error) {
-      toast.error("Error creating dog");
-    } finally {
-      this.setState({ isLoading: false });
-    }
   };
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   render() {
-    const { name, description, picture, isLoading } = this.state;
+    const { isLoading } = this.props;
+    const { name, description, picture } = this.state;
 
     return (
       <form id="create-dog-form" onSubmit={this.handleSubmit}>
@@ -55,14 +58,14 @@ export class ClassCreateDogForm extends Component {
           type="text"
           name="name"
           value={name}
-          onChange={this.handleChange}
+          onChange={this.handleInputChange}
           disabled={isLoading}
         />
         <label htmlFor="description">Dog Description</label>
         <textarea
           name="description"
           value={description}
-          onChange={this.handleChange}
+          onChange={this.handleInputChange}
           cols={80}
           rows={10}
           disabled={isLoading}
@@ -71,7 +74,7 @@ export class ClassCreateDogForm extends Component {
         <select
           name="picture"
           value={picture}
-          onChange={this.handleChange}
+          onChange={this.handleInputChange}
           disabled={isLoading}
         >
           {Object.entries(dogPictures).map(([label, pictureValue]) => (

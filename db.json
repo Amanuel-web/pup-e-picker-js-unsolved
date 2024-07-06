@@ -1,102 +1,129 @@
 {
   "dogs": [
     {
-      "id": "0",
-      "isFavorite": false
+      "name": "Irma",
+      "image": "/assets/chihuahua.avif",
+      "description": "salary Strategist fuchsia Specialist Recumbent",
+      "isFavorite": false,
+      "id": "2"
     },
     {
-      "id": "1",
-      "isFavorite": false
+      "name": "Joanny",
+      "image": "/assets/corgi.png",
+      "description": "Account withdrawal Cleveland Metal Soft against CSS program",
+      "isFavorite": false,
+      "id": "3"
     },
     {
-      "id": "2",
-      "isFavorite": false
-    },
-    {
-      "id": "3",
-      "isFavorite": false
-    },
-    {
-      "id": "4",
-      "isFavorite": true
-    },
-    {
-      "id": "5",
-      "isFavorite": true
-    },
-    {
-      "id": "6",
-      "isFavorite": true
-    },
-    {
-      "id": "7",
-      "isFavorite": true
-    },
-    {
-      "id": "8",
-      "isFavorite": true
-    },
-    {
-      "id": "9",
-      "isFavorite": true
-    },
-    {
-      "id": "10",
-      "isFavorite": true
-    },
-    {
-      "id": "11",
-      "isFavorite": true
-    },
-    {
-      "name": "Effie",
-      "image": "/assets/cowardly.png",
-      "description": "but now Technician Latin pixel ability North",
+      "name": "Antonetta",
+      "image": "/assets/chihuahua.avif",
+      "description": "East Cruiser hobble Gorgeous Hat Djibouti maroon",
       "isFavorite": true,
+      "id": "4"
+    },
+    {
+      "name": "Tremayne",
+      "image": "/assets/boxer.png",
+      "description": "trans Mews Luxurious Road adipisci transmitter times payment",
+      "isFavorite": true,
+      "id": "6"
+    },
+    {
+      "name": "Rubye",
+      "image": "/assets/cowardly.png",
+      "description": "Organic virtual visualize plum Montana neural Hat Hybrid",
+      "isFavorite": true,
+      "id": "7"
+    },
+    {
+      "name": "Rylee",
+      "image": "/assets/corgi.png",
+      "description": "Northeast Executive Coordinator Tesla male East Toys",
+      "isFavorite": true,
+      "id": "8"
+    },
+    {
+      "name": "Joseph",
+      "image": "/assets/blue-heeler.png",
+      "description": "cribro feed Washington Identity Computer West transmitting",
+      "isFavorite": false,
+      "id": "9"
+    },
+    {
+      "name": "Casandra",
+      "image": "/assets/boxer.png",
+      "description": "Wagon Tuna Future SSL SMS Dinar Northwest",
+      "isFavorite": false,
+      "id": "10"
+    },
+    {
+      "name": "Tressa",
+      "image": "/assets/cowardly.png",
+      "description": "Fish Bicycle Port Cotton Gorgeous",
+      "isFavorite": true,
+      "id": "11"
+    },
+    {
+      "name": "Luz",
+      "image": "/assets/blue-heeler.png",
+      "description": "Chrysler female notable East Intelligent Southwest flawed",
+      "isFavorite": false,
       "id": "12"
     },
     {
-      "id": "13",
-      "isFavorite": true
+      "name": "Kraig",
+      "image": "/assets/corgi.png",
+      "description": "insomnia Van East Route arbustum Terbium Gerhold Games",
+      "isFavorite": true,
+      "id": "13"
     },
     {
-      "name": "Murphy",
-      "image": "/assets/dalmation.png",
-      "description": "Future Clwyd Lockman furiously grey ambitus Bespoke",
+      "name": "Filiberto",
+      "image": "/assets/chihuahua.avif",
+      "description": "Coupe connect trained Rap Fundamental",
       "isFavorite": true,
       "id": "14"
     },
     {
-      "name": "Gracie",
-      "image": "/assets/boxer.png",
-      "description": "siemens Tala holistic IB applications microchip Metal",
-      "isFavorite": true,
+      "name": "Emanuel",
+      "image": "/assets/blue-heeler.png",
+      "description": "leading Officer Gadolinium super Funk capio Lamborghini",
+      "isFavorite": false,
       "id": "15"
     },
     {
-      "name": "Omari",
-      "image": "/assets/chihuahua.avif",
-      "description": "bandwidth desire Home generating panel hence Cyprus Accountability",
-      "isFavorite": true,
+      "name": "Rosalinda",
+      "image": "/assets/blue-heeler.png",
+      "description": "gosh Southeast programming sky Junction Harvey attitude South",
+      "isFavorite": false,
       "id": "16"
     },
     {
-      "id": "17",
-      "isFavorite": true
-    },
-    {
-      "id": "18",
-      "isFavorite": true
-    },
-    {
-      "name": "Michel",
-      "image": "/assets/blue-heeler.png",
-      "description": "strange Cotton Wagon Peso woman wireless female",
+      "name": "Ellen",
+      "image": "/assets/boxer.png",
+      "description": "while insist Gasoline which PCI Usability overriding",
       "isFavorite": true,
+      "id": "17"
+    },
+    {
+      "name": "Kari",
+      "image": "/assets/corgi.png",
+      "description": "provident Brand Massachusetts West Fresh Electric Principal viral",
+      "isFavorite": true,
+      "id": "18"
+    },
+    {
+      "name": "Shanelle",
+      "image": "/assets/chihuahua.avif",
+      "description": "Bike Ball Minivan red Bicycle withdrawal Indiana",
+      "isFavorite": false,
       "id": "19"
     },
     {
-      "id": "0856",
+      "id": "99f0",
+      "name": "Leo",
+      "description": "Loved By all ",
+      "image": "/assets/chihuahua.avif",
       "isFavorite": true
     }
   ]

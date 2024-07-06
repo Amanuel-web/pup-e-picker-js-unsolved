@@ -17,8 +17,8 @@ export const FunctionalDogs = ({
           key={dog.id}
           dog={dog}
           isLoading={isLoading}
-          onHeartClick={() => onFavoriteToggle(dog.id, dog.isFavorite)}
-          onEmptyHeartClick={() => onFavoriteToggle(dog.id, dog.isFavorite)}
+          onHeartClick={() => onFavoriteToggle(dog.id, !dog.isFavorite)}
+          onEmptyHeartClick={() => onFavoriteToggle(dog.id, !dog.isFavorite)}
           onTrashIconClick={() => onDelete(dog.id)}
         />
       ))}

@@ -36,7 +36,6 @@ export function FunctionalApp() {
     try {
       await Requests.deleteDog(id);
       await refetchDogs();
-      setDogs(dogs.filter((dog) => dog.id !== id));
     } catch (error) {
       toast.error("Error deleting dog");
     } finally {

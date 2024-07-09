@@ -125,6 +125,13 @@
       "description": "Loved By all ",
       "image": "/assets/chihuahua.avif",
       "isFavorite": true
+    },
+    {
+      "id": "13da",
+      "name": "asdsa",
+      "description": "asdasd",
+      "image": "/assets/blue-heeler.png",
+      "isFavorite": false
     }
   ]
 }

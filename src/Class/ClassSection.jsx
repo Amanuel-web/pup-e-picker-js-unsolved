@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 export class ClassSection extends Component {
   handleTabClick = (tab) => {
-    this.props.setActiveTab((prevTab) => (prevTab === tab ? "all" : tab));
+    const newTab = this.props.activeTab === tab ? "all" : tab;
+    this.props.setActiveTab(newTab);
   };
 
   render() {

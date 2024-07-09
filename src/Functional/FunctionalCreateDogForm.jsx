@@ -29,6 +29,7 @@ export const FunctionalCreateDogForm = ({ isLoading, addDog }) => {
     addDog(newDog)
       .then(() => {
         resetStateForm();
+        toast.success("Dog Created");
       })
       .catch(() => {
         toast.error("Failed to add a dog");

@@ -35,6 +35,7 @@ export class ClassCreateDogForm extends Component {
       .addDog(newDog)
       .then(() => {
         this.resetStateForm();
+        toast.success("Dog Created");
       })
       .catch(() => {
         toast.error("Failed to add a dog");

@@ -17,14 +17,11 @@ export class ClassApp extends Component {
   }
 
   refetchDogs = () => {
-    Requests.getAllDogs()
+    return Requests.getAllDogs()
       .then((data) => {
-        if (!data || !Array.isArray(data)) {
-          throw new Error("Invalid data format");
-        }
         this.setState({ dogs: data });
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("Error fetching dogs");
       });
   };
@@ -33,7 +30,7 @@ export class ClassApp extends Component {
     this.setState({ isLoading: true });
     try {
       await Requests.updateDog({ id, isFavorite });
-      this.refetchDogs();
+      await this.refetchDogs();
     } catch (error) {
       toast.error("Error updating dog");
     } finally {
@@ -45,10 +42,7 @@ export class ClassApp extends Component {
     this.setState({ isLoading: true });
     try {
       await Requests.deleteDog(id);
-      this.refetchDogs();
-      this.setState((prevState) => ({
-        dogs: prevState.dogs.filter((dog) => dog.id !== id),
-      }));
+      await this.refetchDogs();
     } catch (error) {
       toast.error("Error deleting dog");
     } finally {
